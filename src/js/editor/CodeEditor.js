@@ -5,7 +5,8 @@ import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import * as monaco from 'monaco-editor';
 import { registerAutoCompleteHTMLTag } from '../utils';
-import { emmetHTML } from 'emmet-monaco-es';
+import { emmetCSS, emmetHTML, emmetJSX } from 'emmet-monaco-es';
+import { CodeEditorStyle } from './CodeEditor.styles';
 
 export class CodeEditor extends LitElement {
   constructor() {
@@ -26,22 +27,7 @@ export class CodeEditor extends LitElement {
   }
 
   static get styles() {
-    return css`
-      :host {
-        position: relative;
-        overflow: hidden;
-      }
-      :host::after {
-        content: '';
-        position: absolute;
-        background-repeat: no-repeat;
-        right: 16px;
-        bottom: 16px;
-        z-index: 1;
-        width: 48px;
-        height: 48px;
-      }
-    `;
+    return CodeEditorStyle;
   }
 
   render() {
@@ -94,6 +80,8 @@ export class CodeEditor extends LitElement {
         },
       };
 
+      emmetJSX(monaco);
+      emmetCSS(monaco);
       emmetHTML(monaco);
       registerAutoCompleteHTMLTag(monaco);
       this.isInitialized = true;

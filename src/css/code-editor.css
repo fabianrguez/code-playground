@@ -1,0 +1,43 @@
+.playground {
+  display: grid;
+  height: 100%;
+}
+
+.playground[data-layout='2-columns-2-rows'] {
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.playground[data-layout='default'] {
+  grid-template-areas:
+    'html-editor js-editor css-editor'
+    'result result result';
+}
+
+.result {
+  grid-area: result;
+  height: 100%;
+  width: 100%;
+  border: 0;
+  background: var(--white);
+}
+
+code-editor[language='html'] {
+  grid-area: html-editor;
+}
+code-editor[language='javascript'] {
+  grid-area: js-editor;
+}
+code-editor[language='css'] {
+  grid-area: css-editor;
+}
+
+code-editor[language='html']:after {
+  background-image: url('/assets/images/html.svg');
+}
+code-editor[language='javascript']:after {
+  background-image: url('/assets/images/js.svg');
+}
+code-editor[language='css']:after {
+  background-image: url('/assets/images/css.svg');
+}
