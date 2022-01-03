@@ -4,6 +4,8 @@ import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
 import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import * as monaco from 'monaco-editor';
+import { registerAutoCompleteHTMLTag } from '../utils';
+import { emmetHTML } from 'emmet-monaco-es';
 
 export class CodeEditor extends LitElement {
   constructor() {
@@ -54,10 +56,16 @@ export class CodeEditor extends LitElement {
       fontFamily: "'Cascadia Code PL', 'Menlo', 'Monaco', 'Courier New', 'monospace'",
       fontLigatures: 'on',
       formatOnPaste: true,
+      formatOnType: true,
       fontSize: 18,
       lineNumbers: 'on',
+      autoIndent: 'advanced',
       tabSize: 2,
-      minimap: false,
+      minimap: {
+        enabled: false,
+      },
+      matchBrackets: 'always',
+      cursorBlinking: 'expand',
       preserveGrid: false,
       wordWrap: 'on',
       zipInSingleFile: false,
@@ -70,19 +78,25 @@ export class CodeEditor extends LitElement {
   }
 
   static init() {
-    window.MonacoEnvironment = {
-      getWorker(_, label) {
-        switch (label) {
-          case 'html':
-            return new HtmlWorker();
-          case 'javascript':
-            return new JsWorker();
-          case 'css':
-            return new CssWorker();
-          default:
-            return new EditorWorker();
-        }
-      },
-    };
+    if (!this.isInitialized) {
+      window.MonacoEnvironment = {
+        getWorker(_, label) {
+          switch (label) {
+            case 'html':
+              return new HtmlWorker();
+            case 'javascript':
+              return new JsWorker();
+            case 'css':
+              return new CssWorker();
+            default:
+              return new EditorWorker();
+          }
+        },
+      };
+
+      emmetHTML(monaco);
+      registerAutoCompleteHTMLTag(monaco);
+      this.isInitialized = true;
+    }
   }
 }
