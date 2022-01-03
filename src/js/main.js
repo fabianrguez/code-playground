@@ -28,7 +28,7 @@ Object.values(EDITORS).forEach((editor) => {
 
 menuButtons.forEach((button) =>
   button.addEventListener('click', () => {
-    modalElement.toggle();
+    modalElement.open();
     console.dir(modalElement);
   })
 );

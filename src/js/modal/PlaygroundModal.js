@@ -18,14 +18,19 @@ export class PlaygroundModal extends LitElement {
     return PlaygroundModalStyles;
   }
 
-  toggle() {
-    this.open = !this.open;
+  open() {
+    this.open = true;
+    this.setAttribute('open', true);
+  }
+
+  close() {
+    this.open = false;
+    this.setAttribute('open', false);
   }
 
   render() {
-    console.log({ isOpen: this.open });
     return html`
-      <section class="modal" aria-hidden="${!this.open}">
+      <section class="modal" aria-hidden="${!this.open ?? true}">
         <div class="modal__content">Test</div>
       </section>
     `;
