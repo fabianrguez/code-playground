@@ -4,8 +4,9 @@
 }
 
 .playground[data-layout='2-columns-2-rows'] {
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    'html-editor js-editor '
+    'css-editor result';
 }
 
 .playground[data-layout='default'] {
