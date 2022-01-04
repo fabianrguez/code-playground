@@ -1,6 +1,7 @@
 .playground {
   display: grid;
   height: 100%;
+  padding-top: 1rem;
 }
 
 .playground[data-layout='2-columns-2-rows'] {
