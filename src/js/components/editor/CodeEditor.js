@@ -1,11 +1,11 @@
-import { LitElement, html, css } from 'lit';
-import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
-import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
-import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
-import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
-import * as monaco from 'monaco-editor';
-import { registerAutoCompleteHTMLTag } from '../utils';
 import { emmetCSS, emmetHTML, emmetJSX } from 'emmet-monaco-es';
+import { html, LitElement } from 'lit';
+import * as monaco from 'monaco-editor';
+import EditorWorker from 'monaco-editor/esm/vs/editor/editor.worker?worker';
+import CssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker';
+import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
+import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
+import { registerAutoCompleteHTMLTag } from '../../utils';
 import { CodeEditorStyle } from './CodeEditor.styles';
 
 export class CodeEditor extends LitElement {
@@ -34,34 +34,11 @@ export class CodeEditor extends LitElement {
     return html`<slot></slot>`;
   }
 
-  createEditor() {
+  createEditor(options = {}) {
     this.editor = monaco.editor.create(this, {
       value: this.value,
       language: this.language,
-      theme: 'vs-dark',
-      automaticLayout: true,
-      fontFamily: "'Cascadia Code PL', 'Menlo', 'Monaco', 'Courier New', 'monospace'",
-      fontLigatures: 'on',
-      formatOnPaste: true,
-      formatOnType: true,
-      fontSize: 18,
-      lineNumbers: 'on',
-      autoIndent: 'advanced',
-      tabSize: 2,
-      minimap: {
-        enabled: false,
-      },
-      padding: {
-        top: 16
-      },
-      matchBrackets: 'always',
-      cursorBlinking: 'expand',
-      preserveGrid: false,
-      wordWrap: 'on',
-      zipInSingleFile: false,
-      layout: {
-        type: 'default',
-      },
+      ...options
     });
 
     return this.editor;

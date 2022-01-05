@@ -2,11 +2,11 @@
   display: flex;
   align-items: center;
   background: var(--menu-background);
-  padding: 0.75rem;
+  padding: 0.5rem;
 }
 
 .menu footer {
-  margin-left: auto;
+  margin-top: auto;
 }
 
 .menu-btn svg {
@@ -31,7 +31,7 @@
 }
 
 .menu-btn:hover .menu-btn__tooltip {
-  /* display: block; */
+  display: block;
 }
 
 .menu-btn__tooltip {
