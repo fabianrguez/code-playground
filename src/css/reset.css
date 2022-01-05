@@ -32,3 +32,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: var(--background-color);
 }
+
+@media (max-width: 600px) {
+  body {
+    flex-direction: column;
+  }
+
+  body, #app {
+    max-height: 100%;
+  }
+}

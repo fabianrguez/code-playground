@@ -35,3 +35,12 @@
     'html-editor js-editor css-editor'
     'result result result';
 } */
+
+@media (max-width: 600px) {
+  .playground {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+  }
+}

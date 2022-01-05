@@ -25,3 +25,14 @@ code-editor[language='javascript']:after {
 code-editor[language='css']:after {
   background-image: url('/assets/images/css.svg');
 }
+
+@media (max-width: 600px) {
+  code-editor, .result {
+    flex-shrink: 0;
+    scroll-snap-align: center;
+  }
+
+  code-editor {
+    width: 100%;
+  }
+}

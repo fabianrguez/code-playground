@@ -67,3 +67,9 @@
 .menu-btn__tooltip:after {
   border-right: 0.5em solid #2d323c;
 }
+
+@media (max-width: 600px) {
+  .menu footer {
+    margin-left: auto;
+  }
+}
