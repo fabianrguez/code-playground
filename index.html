@@ -7,7 +7,7 @@
     <title>Code Playground | Live Editor for HTML, CSS, JavaScript</title>
   </head>
   <body>
-    <div class="menu">
+    <!-- <div class="menu">
       <footer>
         <button class="menu-btn" title="Layout">
           <span role="tooltip" class="menu-btn__tooltip">Layout</span>
@@ -29,13 +29,15 @@
           </svg>
         </button>
       </footer>
-    </div>
+    </div> -->
     <main id="app">
       <section class="playground" data-layout="default">
         <code-editor language="html"></code-editor>
         <code-editor language="javascript"></code-editor>
         <code-editor language="css"></code-editor>
         <iframe class="result"></iframe>
+        <div class="horizontal-gutter"></div>
+        <div class="vertical-gutter"></div>
       </section>
     </main>
     <script type="module" src="/src/js/main.js"></script>

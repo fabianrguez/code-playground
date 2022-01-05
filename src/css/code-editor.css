@@ -1,30 +1,12 @@
-.playground {
-  display: grid;
-  height: 100%;
-  padding-top: 1rem;
-}
-
-.playground[data-layout='2-columns-2-rows'] {
-  grid-template-areas:
-    'html-editor js-editor '
-    'css-editor result';
-}
-
-.playground[data-layout='default'] {
-  grid-template-areas:
-    'html-editor js-editor css-editor'
-    'result result result';
-}
-
 .result {
-  grid-area: result;
+  /* grid-area: result; */
   height: 100%;
   width: 100%;
   border: 0;
   background: var(--white);
 }
 
-code-editor[language='html'] {
+/* code-editor[language='html'] {
   grid-area: html-editor;
 }
 code-editor[language='javascript'] {
@@ -32,7 +14,7 @@ code-editor[language='javascript'] {
 }
 code-editor[language='css'] {
   grid-area: css-editor;
-}
+} */
 
 code-editor[language='html']:after {
   background-image: url('/assets/images/html.svg');

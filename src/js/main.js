@@ -1,5 +1,6 @@
 import '../css/main.css';
 import './editor';
+import './splitter';
 import { debounce, generateHtml } from './utils';
 
 const editorsElements = document.querySelectorAll('code-editor');

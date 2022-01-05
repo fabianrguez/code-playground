@@ -39,6 +39,7 @@ export class CodeEditor extends LitElement {
       value: this.value,
       language: this.language,
       theme: 'vs-dark',
+      automaticLayout: true,
       fontFamily: "'Cascadia Code PL', 'Menlo', 'Monaco', 'Courier New', 'monospace'",
       fontLigatures: 'on',
       formatOnPaste: true,
@@ -49,6 +50,9 @@ export class CodeEditor extends LitElement {
       tabSize: 2,
       minimap: {
         enabled: false,
+      },
+      padding: {
+        top: 16
       },
       matchBrackets: 'always',
       cursorBlinking: 'expand',
