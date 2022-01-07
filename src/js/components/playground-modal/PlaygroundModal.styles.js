@@ -32,6 +32,8 @@ export const PlaygroundModalStyles = css`
     width: 100%;
     padding: 0.75rem 2rem 3rem;
     box-sizing: border-box;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
@@ -55,6 +57,7 @@ export const PlaygroundModalStyles = css`
   @media (max-width: 600px) {
     .modal__content {
       height: 100%;
+      border-radius: 0;
     }
   }
 
