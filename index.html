@@ -8,11 +8,10 @@
   </head>
   <body>
     <div class="menu">
+      <header></header>
       <footer>
-        <button class="menu-btn" title="Layout">
-          <span role="tooltip" class="menu-btn__tooltip">Settings</span>
-          <div class="icon icon-settings"></div>
-        </button>
+        <menu-item label="Share" icon="share" action="share"></menu-item>
+        <menu-item label="Settings" icon="settings" action="settings"></menu-item>
       </footer>
     </div>
     <main id="app">
@@ -26,8 +25,8 @@
       </section>
     </main>
     <playground-modal hidden>
-      <section slot="content" class="settings">
-        <h2>Settings</h2>
+      <section slot="content" class="settings" data-section="settings">
+        <h2 class="modal__title">Settings</h2>
         <div class="settings__content">
           <setting-item
             settingType="Editor"
@@ -64,6 +63,12 @@
             type="select"
             options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'
           ></setting-item>
+        </div>
+      </section>
+      <section slot="content" class="share" data-section="share">
+        <h2 class="modal__title">Share</h2>
+        <div class="share__content">
+          <button class="share-btn">Copy Link</button>
         </div>
       </section>
     </playground-modal>

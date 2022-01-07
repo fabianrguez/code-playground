@@ -1,87 +1,47 @@
 .menu {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background: var(--menu-background);
-  padding: 0.5rem;
+  padding: 1.5rem 0.5rem;
   width: 60px;
 }
 
 .menu footer {
+  display: flex;
+  flex-direction: column;
   margin-top: auto;
+  gap: 2rem;
 }
 
-.menu-btn svg {
-  width: 40px;
-  height: 40px;
+.modal__title {
+  margin-bottom: 1rem;
 }
 
-.menu-btn {
-  border: 0;
-  padding: 0.25rem 1rem;
-  font-size: 16px;
-  background: transparent;
-  color: var(--white);
-  cursor: pointer;
-  opacity: 0.7;
-  position: relative;
-  transition: opacity 0.1s ease;
+.settings__content,
+.share__content {
+  display: flex;
+  flex-flow: wrap;
+  padding-top: 0.75rem;
+  gap: 2rem;
 }
 
-.menu-btn:hover {
-  opacity: 1;
-}
-
-.menu-btn:hover .menu-btn__tooltip {
-  display: block;
-}
-
-.menu-btn__tooltip {
-  background: #2d323c;
-  border-radius: 3px;
-  border: 1px solid #000;
-  box-shadow: 0 0 15px 2px #0000004d;
-  color: var(--light-gray);
-  display: none;
-  font-size: 1.1em;
-  padding: 0.5em 0.75em;
-  position: absolute;
-  right: -10px;
-  transform: translate(100%);
-  z-index: 2;
-}
-
-.menu-btn__tooltip:after,
-.menu-btn__tooltip:before {
-  content: '';
-  position: absolute;
-  transform: translate(-100%, -50%);
-  top: 50%;
-  left: 0px;
-  right: 0;
-  width: 0px;
-  height: 0px;
-  border-top: 0.5em solid transparent;
-  border-bottom: 0.5em solid transparent;
-  border-right: 0.5em solid #000;
-}
-
-.menu-btn__tooltip:after {
-  border-right: 0.5em solid #2d323c;
+.share-btn {
+  background: var(--rebecca-purple);
 }
 
 @media (max-width: 600px) {
   .menu {
+    flex-direction: row;
     width: 100%;
     height: 60px;
     padding: 0;
   }
 
   .menu footer {
+    flex-direction: row;
     margin-left: auto;
-  }
-
-  .menu-btn:hover .menu-btn__tooltip {
-    display: none;
+    gap: 0;
   }
 }

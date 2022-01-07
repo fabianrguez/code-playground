@@ -1,7 +1,5 @@
 import '../css/main.css';
-import './components/editor';
-import './components/setting-item';
-import './components/playground-modal';
+import './components';
 import './splitter';
 import { debounce, generateHtml } from './utils';
 import { subscribe } from './state';
@@ -9,7 +7,7 @@ import { create, updateOptions } from './editor';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
-const menuButtons = document.querySelectorAll('.menu .menu-btn');
+const menuButtons = document.querySelectorAll('.menu-btn');
 const playgroundModal = document.querySelector('playground-modal');
 
 const debounceUpdate = debounce(update, 200);

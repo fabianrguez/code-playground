@@ -30,7 +30,7 @@ export const PlaygroundModalStyles = css`
     background-color: var(--menu-background);
     color: var(--white);
     width: 100%;
-    padding: 0.75rem 2rem 1rem;
+    padding: 0.75rem 2rem 3rem;
     box-sizing: border-box;
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;

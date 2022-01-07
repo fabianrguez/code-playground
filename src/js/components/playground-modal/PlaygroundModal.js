@@ -20,6 +20,11 @@ export class PlaygroundModal extends LitElement {
     return this.renderRoot.querySelector('.modal__content');
   }
 
+  get _slottedChildren() {
+    const slot = this.shadowRoot.querySelector('slot');
+    return slot.assignedElements({ flatten: true });
+  }
+
   removeSlideOutAnimation({ target }) {
     if (target.classList.contains('slide-out')) {
       target.classList.remove('slide-out');
@@ -27,10 +32,18 @@ export class PlaygroundModal extends LitElement {
     }
   }
 
-  toggleModal() {
+  showModalSection(section) {
+    this._slottedChildren.forEach((child) => {
+      const { section: eventSection } = child.dataset;
+      eventSection === section ? child.classList.remove('hide') : child.classList.add('hide');
+    });
+  }
+
+  toggleModal({ showSection }) {
     if (!this.hidden) {
       this.closeModal();
     } else {
+      this.showModalSection(showSection);
       this.hidden = false;
     }
   }
