@@ -1,7 +1,7 @@
 import '../css/main.css';
 import './components/editor';
+import './components/setting-item';
 import './splitter';
-import './settings';
 import { debounce, generateHtml } from './utils';
 import { closeModal, toggleModal } from './modal';
 import { subscribe } from './state';

@@ -31,40 +31,33 @@
         <section class="settings">
           <h2>Settings</h2>
           <div class="settings__content">
-            <div class="settings__item">
-              <strong><span class="type">Editor:</span> Font Size</strong>
-              Controls the font size in pixels.
-              <input
-                data-for="fontSize"
-                class="input"
-                autocorrect="off"
-                autocapitalize="off"
-                spellcheck="false"
-                type="number"
-                wrap="off"
-                value="16"
-                min="1"
-                max="100"
-                step="1"
-              />
-            </div>
-            <div class="settings__item">
-              <strong><span class="type">Editor:</span> Tab Size</strong>
-              Specify the editor tab size
-              <input
-                data-for="tabSize"
-                class="input"
-                autocorrect="off"
-                autocapitalize="off"
-                spellcheck="false"
-                type="number"
-                wrap="off"
-                value="2"
-                min="1"
-                max="100"
-                step="1"
-              />
-            </div>
+            <setting-item
+              settingType="Editor"
+              label="Font Size"
+              setting="fontSize"
+              description="Controls the font size in pixels."
+              type="number"
+              max="100"
+              min="1"
+            ></setting-item>
+            <setting-item
+              settingType="Editor"
+              label="Tab Size"
+              setting="tabSize"
+              description="Specify the editor tab size"
+              type="number"
+              max="100"
+              min="1"
+            >
+            </setting-item>
+            <setting-item
+              label="Line Numbers"
+              settingType="Editor"
+              description="Controls the display of line numbers."
+              setting="lineNumbers"
+              type="select"
+              options='["on", "off", "relative", "interval"]'
+            ></setting-item>
           </div>
         </section>
       </div>
