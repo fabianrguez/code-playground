@@ -20,6 +20,8 @@
 }
 
 .modal-content {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   bottom: 0;
   background-color: var(--menu-background);
@@ -34,9 +36,9 @@
 
 .close {
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
+  align-self: flex-end;
 }
 
 .close:hover,
@@ -67,4 +69,10 @@
   max-width: 100px;
   font-size: 18px;
   padding-left: 0.5rem;
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    height: 100%;
+  }
 }

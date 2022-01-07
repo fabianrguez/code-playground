@@ -72,4 +72,8 @@
   .menu footer {
     margin-left: auto;
   }
+
+  .menu-btn:hover .menu-btn__tooltip {
+    display: none;
+  }
 }
