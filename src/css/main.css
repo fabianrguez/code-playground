@@ -1,9 +1,8 @@
 @import './variables.css';
-@import './animation.css';
 @import './typography.css';
 @import './reset.css';
 @import './code-editor.css';
 @import './menu.css';
 @import './layout.css';
 @import './icons.css';
-@import './modal.css';
+@import './settings.css';

@@ -3,7 +3,6 @@ import { SettingItemStyles } from './SettingItem.styles';
 import { getState } from '../../state';
 
 const { updateSettings, ...settings } = getState();
-
 export class SettingItem extends LitElement {
   constructor() {
     super();

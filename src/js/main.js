@@ -1,15 +1,16 @@
 import '../css/main.css';
 import './components/editor';
 import './components/setting-item';
+import './components/playground-modal';
 import './splitter';
 import { debounce, generateHtml } from './utils';
-import { closeModal, toggleModal } from './modal';
 import { subscribe } from './state';
 import { create, updateOptions } from './editor';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
 const menuButtons = document.querySelectorAll('.menu .menu-btn');
+const playgroundModal = document.querySelector('playground-modal');
 
 const debounceUpdate = debounce(update, 200);
 
@@ -44,11 +45,10 @@ function update() {
 }
 
 function handleClickOutsideModal(e) {
-  const modal = document.querySelector('.modal');
-  if (e.target == modal) {
-    closeModal();
+  if (e.target == playgroundModal) {
+    playgroundModal.closeModal();
   }
 }
 
-menuButtons.forEach((button) => button.addEventListener('click', toggleModal));
+menuButtons.forEach((button) => button.addEventListener('click', () => playgroundModal.toggleModal()));
 window.addEventListener('click', handleClickOutsideModal);

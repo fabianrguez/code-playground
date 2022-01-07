@@ -25,51 +25,48 @@
         <div class="vertical-gutter"></div>
       </section>
     </main>
-    <div class="modal" aria-hidden="true">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <section class="settings">
-          <h2>Settings</h2>
-          <div class="settings__content">
-            <setting-item
-              settingType="Editor"
-              label="Font Size"
-              setting="fontSize"
-              description="Controls the font size in pixels."
-              type="number"
-              max="100"
-              min="1"
-            ></setting-item>
-            <setting-item
-              settingType="Editor"
-              label="Tab Size"
-              setting="tabSize"
-              description="Specify the editor tab size"
-              type="number"
-              max="100"
-              min="1"
-            >
-            </setting-item>
-            <setting-item
-              label="Line Numbers"
-              settingType="Editor"
-              description="Controls the display of line numbers."
-              setting="lineNumbers"
-              type="select"
-              options='[{"label": "on", "value": "on"}, {"label": "off", "value": "off"}, {"label": "relative", "value": "relative"}, {"label": "interval", "value": "interval"}]'
-            ></setting-item>
-            <setting-item
-              label="Color theme"
-              settingType="Workbench"
-              description="Specifies the color theme used in the workbench"
-              setting="theme"
-              type="select"
-              options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'
-            ></setting-item>
-          </div>
-        </section>
-      </div>
-    </div>
+    <playground-modal hidden>
+      <section slot="content" class="settings">
+        <h2>Settings</h2>
+        <div class="settings__content">
+          <setting-item
+            settingType="Editor"
+            label="Font Size"
+            setting="fontSize"
+            description="Controls the font size in pixels."
+            type="number"
+            max="100"
+            min="1"
+          ></setting-item>
+          <setting-item
+            settingType="Editor"
+            label="Tab Size"
+            setting="tabSize"
+            description="Specify the editor tab size"
+            type="number"
+            max="100"
+            min="1"
+          >
+          </setting-item>
+          <setting-item
+            label="Line Numbers"
+            settingType="Editor"
+            description="Controls the display of line numbers."
+            setting="lineNumbers"
+            type="select"
+            options='[{"label": "on", "value": "on"}, {"label": "off", "value": "off"}, {"label": "relative", "value": "relative"}, {"label": "interval", "value": "interval"}]'
+          ></setting-item>
+          <setting-item
+            label="Color theme"
+            settingType="Workbench"
+            description="Specifies the color theme used in the workbench"
+            setting="theme"
+            type="select"
+            options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'
+          ></setting-item>
+        </div>
+      </section>
+    </playground-modal>
     <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>
