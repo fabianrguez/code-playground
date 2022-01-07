@@ -78,10 +78,7 @@ export class SettingItem extends LitElement {
     } else if (this.type === 'select') {
       return html`
         <select data-for="${this.setting}" @change="${this.handleChange}">
-          ${this.options?.map(({ label, value }) => {
-            const isSelected = this.value === value;
-            return html`<option value="${value}">${label}</option>`;
-          })}
+          ${this.options?.map(({ label, value }) => html`<option value="${value}">${label}</option>`)}
         </select>
       `;
     }
