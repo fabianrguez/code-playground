@@ -56,7 +56,15 @@
               description="Controls the display of line numbers."
               setting="lineNumbers"
               type="select"
-              options='["on", "off", "relative", "interval"]'
+              options='[{"label": "on", "value": "on"}, {"label": "off", "value": "off"}, {"label": "relative", "value": "relative"}, {"label": "interval", "value": "interval"}]'
+            ></setting-item>
+            <setting-item
+              label="Color theme"
+              settingType="Workbench"
+              description="Specifies the color theme used in the workbench"
+              setting="theme"
+              type="select"
+              options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'
             ></setting-item>
           </div>
         </section>

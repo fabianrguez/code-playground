@@ -24,3 +24,9 @@ const COMMON_EDITOR_OPTIONS = {
 };
 
 export const create = (domElement) => domElement.createEditor({ ...COMMON_EDITOR_OPTIONS });
+
+export const updateOptions = (editor, newOptions) =>
+  editor.updateOptions({
+    ...editor.getRawOptions(),
+    ...newOptions,
+  });

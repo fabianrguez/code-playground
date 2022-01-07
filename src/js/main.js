@@ -5,7 +5,7 @@ import './splitter';
 import { debounce, generateHtml } from './utils';
 import { closeModal, toggleModal } from './modal';
 import { subscribe } from './state';
-import { create } from './editor';
+import { create, updateOptions } from './editor';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
@@ -23,11 +23,7 @@ subscribe((state) => {
         enabled: minimap,
       },
     };
-
-    editor.updateOptions({
-      ...editor.getRawOptions(),
-      ...newOptions,
-    });
+    updateOptions(editor, newOptions);
   });
 });
 
