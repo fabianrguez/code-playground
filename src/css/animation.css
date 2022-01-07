@@ -1,3 +1,8 @@
+.slide-out {
+  -webkit-animation: slideOut 0.4s !important;
+  animation: slideOut 0.4s !important;
+}
+
 @-webkit-keyframes slideIn {
   from {
     bottom: -300px;
@@ -17,6 +22,28 @@
   to {
     bottom: 0;
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes slideOut {
+  from {
+    bottom: 0;
+    opacity: 1;
+  }
+  to {
+    bottom: -300px;
+    opacity: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    bottom: 0;
+    opacity: 1;
+  }
+  to {
+    bottom: -300px;
+    opacity: 0;
   }
 }
 

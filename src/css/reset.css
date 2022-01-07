@@ -17,7 +17,8 @@ body,
 
 body,
 #app,
-button {
+button,
+input {
   font-family: 'Cascadia Code PL', monospace;
 }
 

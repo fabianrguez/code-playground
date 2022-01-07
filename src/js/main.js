@@ -3,7 +3,7 @@ import './components/editor';
 import './splitter';
 import './settings';
 import { debounce, generateHtml } from './utils';
-import { toggleModal } from './modal';
+import { closeModal, toggleModal } from './modal';
 import { subscribe } from './state';
 import { create } from './editor';
 
@@ -47,10 +47,12 @@ function update() {
   resultIframe.setAttribute('srcdoc', html);
 }
 
-menuButtons.forEach((button) => button.addEventListener('click', toggleModal));
-window.addEventListener('click', (e) => {
+function handleClickOutsideModal(e) {
   const modal = document.querySelector('.modal');
   if (e.target == modal) {
-    modal.setAttribute('aria-hidden', 'true');
+    closeModal();
   }
-});
+}
+
+menuButtons.forEach((button) => button.addEventListener('click', toggleModal));
+window.addEventListener('click', handleClickOutsideModal);
