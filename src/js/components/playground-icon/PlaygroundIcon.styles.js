@@ -11,10 +11,10 @@ export const PlaygroundIconStyles = css`
   }
 
   .icon-settings {
-    background-image: url('/assets/icons/settings.svg');
+    background-image: url('../../../../assets/icons/settings.svg');
   }
 
   .icon-share {
-    background-image: url('/assets/icons/share.svg');
+    background-image: url('../../../../assets/icons/share.svg');
   }
 `;
