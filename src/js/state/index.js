@@ -22,9 +22,4 @@ const useStore = create((set) => ({
   },
 }));
 
-export const {
-  getState,
-  setState,
-  subscribe,
-  destroy
-} = useStore
+export const { getState, setState, subscribe, destroy } = useStore;
