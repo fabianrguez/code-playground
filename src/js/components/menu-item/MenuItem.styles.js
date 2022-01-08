@@ -63,10 +63,6 @@ export const MenuItemStyles = css`
     color: var(--white);
   }
 
-  .icon-settings {
-    background-image: url('/assets/icons/settings.svg');
-  }
-
   @media (max-width: 600px) {
     .menu-btn:hover .menu-btn__tooltip {
       display: none;
