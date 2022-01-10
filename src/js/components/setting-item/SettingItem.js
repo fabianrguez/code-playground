@@ -1,6 +1,7 @@
 import { html, LitElement } from 'lit';
 import { SettingItemStyles } from './SettingItem.styles';
 import { getState } from '../../state';
+import { showToast } from '../../toast';
 
 const { updateSettings, ...settings } = getState();
 export class SettingItem extends LitElement {
@@ -54,6 +55,7 @@ export class SettingItem extends LitElement {
     let _value = type === 'checkbox' ? checked : value;
 
     updateSettings({ key: settingKey, value: _value });
+    showToast({ content: `${this.label} updated!` });
   };
 
   getSettingType = () => {

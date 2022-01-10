@@ -108,6 +108,21 @@
         </div>
       </section>
     </playground-modal>
+    <div class="toast-container" aria-live="polite" aria-atomic="true">
+      <template id="toast-template">
+        <div class="toast" role="status" aria-live="polite" aria-atomic="true">
+          <header class="toast__header">
+            <img src="./favicon.svg" alt="" />
+            <strong>Code Playground</strong>
+            <button class="close" data-dismiss="toast" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </header>
+          <div class="toast__body"></div>
+        </div>
+      </template>
+    </div>
+
     <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>
