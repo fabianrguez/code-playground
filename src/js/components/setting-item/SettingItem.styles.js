@@ -17,4 +17,17 @@ export const SettingItemStyles = css`
     font-size: 18px;
     padding-left: 0.5rem;
   }
+
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 4px;
+    max-width: 200px;
+  }
+
+  @media (max-width: 600px) {
+    .checkbox {
+      max-width: 100%;
+    }
+  }
 `;

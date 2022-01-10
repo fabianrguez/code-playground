@@ -75,9 +75,16 @@
           ></setting-item>
           <setting-item
             settingType="Editor"
+            label="Font Ligatures"
+            setting="fontLigatures"
+            description="Controls whether the ligatures is enabled."
+            type="checkbox"
+          ></setting-item>
+          <setting-item
+            settingType="Editor"
             label="Tab Size"
             setting="tabSize"
-            description="Specify the editor tab size"
+            description="Specify the editor tab size."
             type="number"
             max="100"
             min="1"
@@ -92,9 +99,17 @@
             options='[{"label": "on", "value": "on"}, {"label": "off", "value": "off"}, {"label": "relative", "value": "relative"}, {"label": "interval", "value": "interval"}]'
           ></setting-item>
           <setting-item
+            label="Word Wrap"
+            settingType="Editor"
+            description="Specifies the color theme used in the workbench."
+            setting="wordWrap"
+            type="select"
+            options='[{"label": "On", "value": "on"},{"label": "Off", "value": "off"},{"label": "Word Wrap Column", "value": "wordWrapColumn"},{"label": "Bounded", "value": "bounded"}]'
+          ></setting-item>
+          <setting-item
             label="Color theme"
             settingType="Workbench"
-            description="Specifies the color theme used in the workbench"
+            description="Controls how lines should wrap."
             setting="theme"
             type="select"
             options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'

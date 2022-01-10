@@ -43,7 +43,10 @@ export class SettingItem extends LitElement {
     this.value = settings[this.setting];
     if (this.type === 'select') {
       const selectedOption = this.renderRoot.querySelector(`option[value=${this.value}]`);
-      selectedOption.setAttribute('selected', '');
+      selectedOption?.setAttribute('selected', '');
+    } else if (this.type === 'checkbox') {
+      const checkbox = this.renderRoot.querySelector('input[type=checkbox]');
+      checkbox.checked = this.value;
     }
   }
 
@@ -59,7 +62,7 @@ export class SettingItem extends LitElement {
   };
 
   getSettingType = () => {
-    if (this.type === 'number' || this.type === 'checkbox') {
+    if (this.type === 'number') {
       return html`
         <input
           @input="${this.handleChange}"
@@ -82,6 +85,11 @@ export class SettingItem extends LitElement {
           ${this.options?.map(({ label, value }) => html`<option value="${value}">${label}</option>`)}
         </select>
       `;
+    } else if (this.type === 'checkbox') {
+      return html` <label class="checkbox">
+        <input type="checkbox" data-for="${this.setting}" @change="${this.handleChange}"></input>
+        ${this.description}
+      </label> `;
     }
   };
 
@@ -89,7 +97,7 @@ export class SettingItem extends LitElement {
     return html`
       <div class="setting__item">
         <strong><span class="type">${this.settingType}:</span> ${this.label}</strong>
-        ${this.description} ${this.getSettingType()}
+        ${this.type !== 'checkbox' ? this.description : ''} ${this.getSettingType()}
       </div>
     `;
   }

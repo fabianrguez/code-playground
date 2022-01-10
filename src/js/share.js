@@ -1,7 +1,7 @@
 import { copyToClipboard } from './utils';
 import { showToast } from './toast';
 
-const shareUrlButton = document.querySelector('.btn-share.copy-link');
+const shareUrlButton = document.querySelector('.share-btn.copy-link');
 
 function handleCopyUrl() {
   copyToClipboard(window.location);
