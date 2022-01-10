@@ -9,6 +9,7 @@
   padding-left: 2rem;
   overflow: hidden;
   visibility: hidden;
+  max-height: 100%;
 }
 
 .toast {
