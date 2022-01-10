@@ -1,11 +1,11 @@
+import { decode, encode } from 'js-base64';
 import '../css/main.css';
 import './components';
-import './splitter';
-import { copyToClipboard, debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
-import { subscribe } from './state';
 import { create, updateOptions } from './editor';
-import { decode, encode } from 'js-base64';
-import { showToast } from './toast';
+import './splitter';
+import './share';
+import { subscribe } from './state';
+import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
@@ -69,9 +69,5 @@ function handleClickOutsideModal(e) {
   }
 }
 
-document.querySelector('.share-btn.copy-link').addEventListener('click', () => {
-  copyToClipboard(window.location);
-  showToast({ content: 'URL copied to clipboard!' });
-});
 window.addEventListener('click', handleClickOutsideModal);
 document.addEventListener('DOMContentLoaded', update);
