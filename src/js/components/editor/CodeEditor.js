@@ -34,12 +34,19 @@ export class CodeEditor extends LitElement {
     return html`<slot></slot>`;
   }
 
+  changeCodeEvent = () => {
+    const codeChangedEvent = new Event('code-changed');
+    this.dispatchEvent(codeChangedEvent);
+  };
+
   createEditor(options = {}) {
     this.editor = monaco.editor.create(this, {
       value: this.value,
       language: this.language,
-      ...options
+      ...options,
     });
+
+    this.editor.onDidChangeModelContent(this.changeCodeEvent);
 
     return this.editor;
   }

@@ -41,12 +41,12 @@ const EDITORS = [...editorsElements].reduce((acc, editor) => {
   const { language } = editor;
   editor.value = EDITOR_DEFAULT_VALUE[language];
   acc = { ...acc, [language]: create(editor) };
+ 
+  editor.addEventListener('code-changed', debounceUpdate);
+  
   return acc;
 }, {});
 
-Object.values(EDITORS).forEach((editor) => {
-  editor.onDidChangeModelContent(debounceUpdate);
-});
 
 function update() {
   const { html: htmlEditor, css: cssEditor, javascript: jsEditor } = EDITORS;
