@@ -1,7 +1,7 @@
 import '../css/main.css';
 import './components';
 import './splitter';
-import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
+import { copyToClipboard, debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
 import { subscribe } from './state';
 import { create, updateOptions } from './editor';
 import { decode, encode } from 'js-base64';
@@ -68,5 +68,9 @@ function handleClickOutsideModal(e) {
   }
 }
 
+
+document.querySelector('.share-btn.copy-link').addEventListener('click', () => {
+  copyToClipboard(window.location);
+});
 window.addEventListener('click', handleClickOutsideModal);
 document.addEventListener('DOMContentLoaded', update);
