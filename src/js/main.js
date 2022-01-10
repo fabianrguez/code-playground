@@ -1,18 +1,26 @@
 import '../css/main.css';
 import './components';
 import './splitter';
-import { debounce, generateHtml } from './utils';
+import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
 import { subscribe } from './state';
 import { create, updateOptions } from './editor';
-import { encode } from 'js-base64';
+import { decode, encode } from 'js-base64';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
-const menuButtons = document.querySelectorAll('.menu-btn');
 const playgroundModal = document.querySelector('playground-modal');
 
 const debounceUpdate = debounce(update, 200);
 const debounceUpdateHash = debounce(updateHash, 500);
+
+const { code: hashedCodeUrl } = getUrlParams();
+const [htmlUrlCode, jsUrlCode, cssUrlCode] = decode(hashedCodeUrl ?? '').split('|');
+
+const EDITOR_DEFAULT_VALUE = {
+  html: htmlUrlCode,
+  javascript: jsUrlCode,
+  css: cssUrlCode,
+};
 
 subscribe((state) => {
   Object.values(EDITORS).forEach((editor) => {
@@ -30,6 +38,7 @@ subscribe((state) => {
 
 const EDITORS = [...editorsElements].reduce((acc, editor) => {
   const { language } = editor;
+  editor.value = EDITOR_DEFAULT_VALUE[language];
   acc = { ...acc, [language]: create(editor) };
   return acc;
 }, {});
@@ -47,9 +56,10 @@ function update() {
 
 function updateHash() {
   const { html: htmlEditor, css: cssEditor, javascript: jsEditor } = EDITORS;
-  const encodedHTML = encode(`${htmlEditor.getValue()}|${jsEditor.getValue()}|${cssEditor.getValue()}`);
-  window.history.replaceState(null, null, `?code=${encodedHTML}`);
-  
+  if ([htmlEditor, cssEditor, jsEditor].some((editor) => editor.getValue() !== '')) {
+    const encodedHTML = encode(`${htmlEditor.getValue()}|${jsEditor.getValue()}|${cssEditor.getValue()}`);
+    updateUrlCodeParam(encodedHTML);
+  }
 }
 
 function handleClickOutsideModal(e) {
@@ -58,5 +68,5 @@ function handleClickOutsideModal(e) {
   }
 }
 
-menuButtons.forEach((button) => button.addEventListener('click', () => playgroundModal.toggleModal()));
 window.addEventListener('click', handleClickOutsideModal);
+document.addEventListener('DOMContentLoaded', update);
