@@ -1,6 +1,12 @@
 import { css } from 'lit';
 
 export const SettingItemStyles = css`
+  input,
+  select {
+    font-family: 'Cascadia Code PL', monospace;
+    font-size: 18px;
+  }
+
   .setting__item {
     display: flex;
     flex-direction: column;
@@ -11,9 +17,13 @@ export const SettingItemStyles = css`
     opacity: 0.6;
   }
 
-  .setting__item input,
-  .setting__item select {
+  .setting__item input[type='number'] {
     max-width: 100px;
+  }
+
+  .setting__item input[type='text'],
+  .setting__item select {
+    max-width: 200px;
     font-size: 18px;
     padding-left: 0.5rem;
   }
@@ -22,7 +32,6 @@ export const SettingItemStyles = css`
     display: flex;
     align-items: flex-start;
     gap: 4px;
-    max-width: 200px;
   }
 
   @media (max-width: 600px) {

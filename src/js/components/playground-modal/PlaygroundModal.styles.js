@@ -58,6 +58,7 @@ export const PlaygroundModalStyles = css`
     .modal__content {
       height: 100%;
       border-radius: 0;
+      overflow-y: auto;
     }
   }
 

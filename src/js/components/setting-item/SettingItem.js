@@ -1,7 +1,6 @@
 import { html, LitElement } from 'lit';
-import { SettingItemStyles } from './SettingItem.styles';
 import { getState } from '../../state';
-import { showToast } from '../../toast';
+import { SettingItemStyles } from './SettingItem.styles';
 
 const { updateSettings, ...settings } = getState();
 export class SettingItem extends LitElement {
@@ -52,20 +51,25 @@ export class SettingItem extends LitElement {
 
   static styles = SettingItemStyles;
 
+  settingChangedEvent = () => {
+    const event = new CustomEvent('setting-changed', { detail: { setting: this.label } });
+    this.dispatchEvent(event);
+  };
+
   handleChange = ({ target }) => {
     const { value, checked, type } = target;
     const { for: settingKey } = target.dataset;
     let _value = type === 'checkbox' ? checked : value;
 
     updateSettings({ key: settingKey, value: _value });
-    showToast({ content: `${this.label} updated!` });
+    this.settingChangedEvent();
   };
 
   getSettingType = () => {
-    if (this.type === 'number') {
+    if (this.type === 'number' || this.type === 'text') {
       return html`
         <input
-          @input="${this.handleChange}"
+          @change="${this.handleChange}"
           data-for="${this.setting}"
           class="${this.type}"
           autocorrect="off"

@@ -13,11 +13,11 @@ function handleCopyUrl() {
 }
 
 async function handleDownloadCode() {
-  const { fileName } = getState();
+  const { fileName, zipInSingleFile } = getState();
   const { code: hashedCodeUrl } = getUrlParams();
   const [htmlCode, jsCode, cssCode] = decode(hashedCodeUrl ?? '').split('|');
 
-  await downloadCode({ htmlCode, jsCode, cssCode, fileName });
+  await downloadCode({ htmlCode, jsCode, cssCode, fileName, zipInSingleFile });
   showToast({ content: `${fileName}.zip file has been downloaded!` });
 }
 

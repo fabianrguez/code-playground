@@ -8,10 +8,12 @@ import './download';
 import { subscribe } from './state';
 import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
 import { updateButtonsAvailability } from './share';
+import { showToast } from './toast';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
 const playgroundModal = document.querySelector('playground-modal');
+const settingItems = document.querySelectorAll('setting-item');
 
 const debounceUpdate = debounce(update, 200);
 const debounceUpdateHash = debounce(updateHash, 500);
@@ -75,5 +77,11 @@ function handleClickOutsideModal(e) {
   }
 }
 
+function handleSettingItemChange(e) {
+  const { setting } = e.detail;
+  showToast({ content: `${setting} has been updated!` });
+}
+
+settingItems.forEach((settingItem) => settingItem.addEventListener('setting-changed', handleSettingItemChange));
 window.addEventListener('click', handleClickOutsideModal);
 document.addEventListener('DOMContentLoaded', update);

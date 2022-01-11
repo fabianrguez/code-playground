@@ -68,6 +68,10 @@ body {
   background: var(--background-color);
 }
 
+fieldset {
+  border: none;
+}
+
 @media (max-width: 600px) {
   body {
     flex-direction: column;

@@ -64,56 +64,93 @@
       <section slot="content" class="settings" data-section="settings">
         <h2 class="modal__title">Settings</h2>
         <div class="settings__content">
-          <setting-item
-            settingType="Editor"
-            label="Font Size"
-            setting="fontSize"
-            description="Controls the font size in pixels."
-            type="number"
-            max="100"
-            min="1"
-          ></setting-item>
-          <setting-item
-            settingType="Editor"
-            label="Font Ligatures"
-            setting="fontLigatures"
-            description="Controls whether the ligatures is enabled."
-            type="checkbox"
-          ></setting-item>
-          <setting-item
-            settingType="Editor"
-            label="Tab Size"
-            setting="tabSize"
-            description="Specify the editor tab size."
-            type="number"
-            max="100"
-            min="1"
-          >
-          </setting-item>
-          <setting-item
-            label="Line Numbers"
-            settingType="Editor"
-            description="Controls the display of line numbers."
-            setting="lineNumbers"
-            type="select"
-            options='[{"label": "on", "value": "on"}, {"label": "off", "value": "off"}, {"label": "relative", "value": "relative"}, {"label": "interval", "value": "interval"}]'
-          ></setting-item>
-          <setting-item
-            label="Word Wrap"
-            settingType="Editor"
-            description="Specifies the color theme used in the workbench."
-            setting="wordWrap"
-            type="select"
-            options='[{"label": "On", "value": "on"},{"label": "Off", "value": "off"},{"label": "Word Wrap Column", "value": "wordWrapColumn"},{"label": "Bounded", "value": "bounded"}]'
-          ></setting-item>
-          <setting-item
-            label="Color theme"
-            settingType="Workbench"
-            description="Controls how lines should wrap."
-            setting="theme"
-            type="select"
-            options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'
-          ></setting-item>
+          <div class="group settings__editor">
+            <div class="group__title">
+              <img class="group__title--icon" src="/assets/icons/document.svg" alt="document icon" />
+              <h3>Editor</h3>
+            </div>
+            <fieldset class="group__content">
+              <setting-item
+                settingType="Editor"
+                label="Font Size"
+                setting="fontSize"
+                description="Controls the font size in pixels."
+                type="number"
+                max="100"
+                min="1"
+              ></setting-item>
+              <setting-item
+                settingType="Editor"
+                label="Font Ligatures"
+                setting="fontLigatures"
+                description="Controls whether the ligatures is enabled."
+                type="checkbox"
+              ></setting-item>
+              <setting-item
+                settingType="Editor"
+                label="Tab Size"
+                setting="tabSize"
+                description="Specify the editor tab size."
+                type="number"
+                max="100"
+                min="1"
+              >
+              </setting-item>
+              <setting-item
+                label="Line Numbers"
+                settingType="Editor"
+                description="Controls the display of line numbers."
+                setting="lineNumbers"
+                type="select"
+                options='[{"label": "on", "value": "on"}, {"label": "off", "value": "off"}, {"label": "relative", "value": "relative"}, {"label": "interval", "value": "interval"}]'
+              ></setting-item>
+              <setting-item
+                label="Word Wrap"
+                settingType="Editor"
+                description="Specifies the color theme used in the workbench."
+                setting="wordWrap"
+                type="select"
+                options='[{"label": "On", "value": "on"},{"label": "Off", "value": "off"},{"label": "Word Wrap Column", "value": "wordWrapColumn"},{"label": "Bounded", "value": "bounded"}]'
+              ></setting-item>
+            </fieldset>
+          </div>
+          <div class="group settings__workbench">
+            <div class="group__title">
+              <img src="/assets/icons/workspace.svg" alt="" class="group__title--icon" />
+              <h3>Workbench</h3>
+            </div>
+            <fieldset class="group__content">
+              <setting-item
+                label="Color theme"
+                settingType="Workbench"
+                description="Controls how lines should wrap."
+                setting="theme"
+                type="select"
+                options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'
+              ></setting-item>
+            </fieldset>
+          </div>
+          <div class="group settings__download">
+            <div class="group__title">
+              <img class="group__title--icon" src="/assets/icons/download.svg" alt="" />
+              <h3>Download</h3>
+            </div>
+            <fieldset class="group__content">
+              <setting-item
+                label="Download ZIP file name"
+                settingType="Download"
+                setting="fileName"
+                type="text"
+              ></setting-item>
+              <setting-item
+                label="Single file"
+                description="Controls wether the code is downloaded as single file."
+                settingType="Download"
+                setting="zipInSingleFile"
+                type="checkbox"
+              ></setting-item>
+            </fieldset>
+          </div>
         </div>
       </section>
       <section slot="content" class="share" data-section="share">
@@ -144,7 +181,6 @@
         </div>
       </template>
     </div>
-
     <script type="module" src="/src/js/main.js"></script>
   </body>
 </html>
