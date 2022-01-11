@@ -1,0 +1,38 @@
+const initZip = () => import('jszip').then(({ default: JSZip }) => new JSZip());
+
+export async function downloadCode({ htmlCode, jsCode, cssCode, fileName }) {
+  const zip = await createZipFiles({ htmlCode, jsCode, cssCode });
+  generateZip({ zip, fileName });
+}
+
+async function createZipFiles({ htmlCode, jsCode, cssCode }) {
+  const jsZip = await initZip();
+  const html = `
+    <html>
+      <head>
+        <link type="text/css" rel="stylesheet" href="style.css"/>
+      </head>
+      <body>
+        ${htmlCode}
+        <script type="module" src="main.js"></script>
+      </body>
+    </html>
+  `;
+
+  jsZip.file('index.html', html);
+  jsZip.file('main.js', jsCode);
+  jsZip.file('style.css', cssCode);
+
+  return jsZip;
+}
+
+function generateZip({ zip, fileName }) {
+  zip.generateAsync({ type: 'blob' }).then((blobData) => {
+    const element = window.document.createElement('a');
+
+    element.href = window.URL.createObjectURL(blobData);
+    element.download = `${fileName}.zip`;
+    element.click();
+    element.remove();
+  });
+}

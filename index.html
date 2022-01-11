@@ -7,7 +7,7 @@
     <title>Code Playground | Live Editor for HTML, CSS, JavaScript</title>
   </head>
   <body>
-    <div class="menu">
+    <aside class="menu">
       <header></header>
       <footer>
         <menu-item label="Share" icon="share" action="share">
@@ -49,7 +49,7 @@
           </svg>
         </menu-item>
       </footer>
-    </div>
+    </aside>
     <main id="app">
       <section class="playground" data-layout="default">
         <code-editor language="html"></code-editor>
@@ -119,7 +119,14 @@
       <section slot="content" class="share" data-section="share">
         <h2 class="modal__title">Share</h2>
         <div class="share__content">
-          <button class="share-btn copy-link">Copy Link</button>
+          <button class="share-btn copy-link">
+            <span>Copy Link</span>
+            <img class="icon" src="./assets/icons/copy.svg" alt="copy icon" />
+          </button>
+          <button class="share-btn download-code">
+            <span>Download Code</span>
+            <img class="icon" src="./assets/icons/download.svg" alt="download icon" />
+          </button>
         </div>
       </section>
     </playground-modal>

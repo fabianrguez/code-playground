@@ -23,6 +23,8 @@ input {
 }
 
 button {
+  display: flex;
+  align-items: center;
   border: 0;
   padding: 0.75rem 1rem;
   font-size: 16px;
@@ -38,6 +40,15 @@ button {
 button:hover {
   opacity: 1;
   box-shadow: -3px 3px 6px 2px rgba(102, 51, 153, 0.3);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  box-shadow: initial;
 }
 
 svg.icon {
@@ -69,5 +80,6 @@ body {
 
   button {
     width: 100%;
+    justify-content: center;
   }
 }

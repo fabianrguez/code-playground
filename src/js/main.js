@@ -4,8 +4,10 @@ import './components';
 import { create, updateOptions } from './editor';
 import './splitter';
 import './share';
+import './download';
 import { subscribe } from './state';
 import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
+import { updateButtonsAvailability } from './share';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
@@ -41,17 +43,21 @@ const EDITORS = [...editorsElements].reduce((acc, editor) => {
   const { language } = editor;
   editor.value = EDITOR_DEFAULT_VALUE[language];
   acc = { ...acc, [language]: create(editor) };
- 
+
   editor.addEventListener('code-changed', debounceUpdate);
-  
+
   return acc;
 }, {});
-
 
 function update() {
   const { html: htmlEditor, css: cssEditor, javascript: jsEditor } = EDITORS;
   const html = generateHtml({ html: htmlEditor.getValue(), css: cssEditor.getValue(), js: jsEditor.getValue() });
   debounceUpdateHash();
+  updateButtonsAvailability({
+    htmlCode: htmlEditor.getValue(),
+    cssCode: cssEditor.getValue(),
+    jsCode: jsEditor.getValue(),
+  });
   resultIframe.setAttribute('srcdoc', html);
 }
 

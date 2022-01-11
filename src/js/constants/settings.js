@@ -1,3 +1,5 @@
+const DEFAULT_FILENAME = 'code-playground';
+
 export const DEFAULT_SETTINGS = {
   theme: 'vs-dark',
   automaticLayout: true,
@@ -18,6 +20,7 @@ export const DEFAULT_SETTINGS = {
   preserveGrid: false,
   wordWrap: 'on',
   zipInSingleFile: false,
+  fileName: DEFAULT_FILENAME,
   layout: {
     type: 'default',
   },
