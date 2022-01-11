@@ -59,6 +59,36 @@
   background: var(--rebecca-purple);
 }
 
+.share-btn:hover .tooltip {
+  opacity: 1 !important;
+  visibility: visible;
+}
+
+.share-btn:hover .tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--rebecca-purple) transparent transparent transparent;
+}
+
+.share-btn .tooltip {
+  position: absolute;
+  width: 200px;
+  bottom: 120%;
+  left: 50%;
+  margin-left: -100px;
+  opacity: 0;
+  visibility: hidden;
+  font-size: 11px;
+  background: var(--rebecca-purple);
+  border-radius: 8px;
+  padding: 0.35rem 0;
+}
+
 .share-btn .icon {
   margin-left: 0.5rem;
   height: 30px;

@@ -24,8 +24,19 @@ async function handleDownloadCode() {
 export function updateButtonsAvailability({ htmlCode, jsCode, cssCode }) {
   const buttons = [shareUrlButton, downloadCodeButton];
   const hasContent = [htmlCode, jsCode, cssCode].some((value) => value !== '');
-  buttons.forEach((button) => (button.disabled = !hasContent));
+  buttons.forEach((button) => {
+    button.disabled = !hasContent;
+  });
+}
+
+function initButtonsDisabledTooltip() {
+  const buttons = [shareUrlButton, downloadCodeButton];
+  buttons.forEach((button) => {
+    const tooltip = button.querySelector('.tooltip');
+    tooltip.textContent === '' && (tooltip.textContent = 'Starts writing code to enable this button');
+  });
 }
 
 downloadCodeButton.addEventListener('click', handleDownloadCode);
 shareUrlButton.addEventListener('click', handleCopyUrl);
+document.addEventListener('DOMContentLoaded', initButtonsDisabledTooltip);
