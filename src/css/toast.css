@@ -74,6 +74,13 @@
 }
 
 @media (max-width: 600px) {
+  .toast-container {
+    flex-direction: column-reverse;
+    top: initial;
+    bottom: 0;
+    padding-bottom: 2rem;
+  }
+
   .toast .close {
     width: initial;
   }
