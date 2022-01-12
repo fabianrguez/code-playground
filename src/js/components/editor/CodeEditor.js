@@ -7,6 +7,7 @@ import HtmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker';
 import JsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker';
 import { registerAutoCompleteHTMLTag } from '../../utils';
 import { CodeEditorStyle } from './CodeEditor.styles';
+import cssFormatMonaco from 'css-format-monaco';
 
 export class CodeEditor extends LitElement {
   constructor() {
@@ -72,6 +73,7 @@ export class CodeEditor extends LitElement {
       emmetCSS(monaco);
       emmetHTML(monaco);
       registerAutoCompleteHTMLTag(monaco);
+      cssFormatMonaco(monaco, { indent_size: 2, indent_with_tabs: false });
       this.isInitialized = true;
     }
   }
