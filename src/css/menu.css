@@ -59,8 +59,8 @@
   background: var(--rebecca-purple);
 }
 
-.share-btn:hover .tooltip {
-  opacity: 1 !important;
+.share-btn:disabled:hover .tooltip {
+  opacity: 1;
   visibility: visible;
   max-height: 100%;
   transform: scale(1);
