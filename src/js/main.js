@@ -9,6 +9,7 @@ import { subscribe } from './state';
 import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
 import { updateButtonsAvailability } from './share';
 import { showToast } from './toast';
+import WindowPreview from './WindowPreview';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
@@ -60,6 +61,7 @@ function update() {
     cssCode: cssEditor.getValue(),
     jsCode: jsEditor.getValue(),
   });
+  WindowPreview.updateContent(html);
   resultIframe.setAttribute('srcdoc', html);
 }
 

@@ -55,8 +55,8 @@ export const MenuItemStyles = css`
   }
 
   .icon {
-    height: 46px;
-    width: 46px;
+    height: 42px;
+    width: 42px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: 100%;
