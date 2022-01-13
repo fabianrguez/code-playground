@@ -20,7 +20,6 @@ class WindowPreview {
     this.previewWindow.document.title = `${document.title} | Preview`
     this.previewWindow.document.body.style.margin = '0';
     this.iframe = this.previewWindow.document.createElement('iframe');
-    this.iframe.setAttribute('srcDoc', document.querySelector('iframe.result').getAttribute('srcDoc'));
     Object.entries(this.previewWindowStyles).forEach(([key, value]) => (this.iframe.style[key] = value));
 
     this.previewWindow.document.body.appendChild(this.iframe);
