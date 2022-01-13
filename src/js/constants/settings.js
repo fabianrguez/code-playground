@@ -25,8 +25,8 @@ export const DEFAULT_SETTINGS = {
   zipInSingleFile: false,
   fileName: DEFAULT_FILENAME,
   layout: {
-    gutters: LAYOUTS['one-row'],
-    style: GRID_LAYOUT['one-row'],
-    type: 'one-row',
+    gutters: LAYOUTS.default,
+    style: GRID_LAYOUT.default,
+    type: 'default',
   },
 };
