@@ -1,21 +1,3 @@
-.result {
-  /* grid-area: result; */
-  height: 100%;
-  width: 100%;
-  border: 0;
-  background: var(--white);
-}
-
-/* code-editor[language='html'] {
-  grid-area: html-editor;
-}
-code-editor[language='javascript'] {
-  grid-area: js-editor;
-}
-code-editor[language='css'] {
-  grid-area: css-editor;
-} */
-
 code-editor[language='html']:after {
   background-image: url('/assets/images/html.svg');
 }
@@ -27,7 +9,8 @@ code-editor[language='css']:after {
 }
 
 @media (max-width: 600px) {
-  code-editor, .result {
+  code-editor,
+  .result {
     flex-shrink: 0;
     scroll-snap-align: center;
   }

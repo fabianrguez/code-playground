@@ -5,11 +5,12 @@ import { create, updateOptions } from './editor';
 import './splitter';
 import './share';
 import './download';
-import { subscribe } from './state';
+import { subscribe, getState } from './state';
 import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
 import { updateButtonsAvailability } from './share';
 import { showToast } from './toast';
 import WindowPreview from './WindowPreview';
+import { setSplitGrid } from './splitter';
 
 const editorsElements = document.querySelectorAll('code-editor');
 const resultIframe = document.querySelector('iframe.result');
@@ -27,6 +28,9 @@ const EDITOR_DEFAULT_VALUE = {
   javascript: jsUrlCode,
   css: cssUrlCode,
 };
+const { layout } = getState();
+
+setSplitGrid(layout.splitter);
 
 subscribe((state) => {
   Object.values(EDITORS).forEach((editor) => {
@@ -40,6 +44,7 @@ subscribe((state) => {
     };
     updateOptions(editor, newOptions);
   });
+  setSplitGrid();
 });
 
 const EDITORS = [...editorsElements].reduce((acc, editor) => {
