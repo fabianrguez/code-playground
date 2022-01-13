@@ -1,4 +1,5 @@
-import { DEFAULT_LAYOUT } from './layout';
+import { GRID_LAYOUT } from './gridlayout';
+import {LAYOUTS } from './layout';
 
 const DEFAULT_FILENAME = 'code-playground';
 
@@ -24,7 +25,8 @@ export const DEFAULT_SETTINGS = {
   zipInSingleFile: false,
   fileName: DEFAULT_FILENAME,
   layout: {
-    splitter: DEFAULT_LAYOUT,
-    type: 'default',
+    gutters: LAYOUTS['one-row'],
+    style: GRID_LAYOUT['one-row'],
+    type: 'one-row',
   },
 };

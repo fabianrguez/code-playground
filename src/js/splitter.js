@@ -1,4 +1,5 @@
 import Split from 'split-grid';
+import { GRID_LAYOUT } from './constants';
 
 let split;
 
@@ -7,16 +8,19 @@ const formatGutters = (gutter) => ({
   element: document.querySelector(gutter?.element),
 });
 
-export function setSplitGrid(layout) {
-  // document.querySelector('.playground').setAttribute('style', 'grid-template-columns:1fr 5px 1fr 5px 1fr 5px 1fr;');
+export function setSplitGrid({ gutters, type }) {
+  const playgrondElement = document.querySelector('.playground');
+  playgrondElement.setAttribute('style', GRID_LAYOUT[type]);
+  playgrondElement.setAttribute('data-layout', type);
+  
   if (split) {
     split.destroy(true);
   }
 
   const splitConfig = {
-    ...layout,
-    ...(layout.columnGutters && { columnGutters: layout.columnGutters.map(formatGutters) }),
-    ...(layout.rowGutters && { rowGutters: layout.rowGutters.map(formatGutters) }),
+    ...gutters,
+    ...(gutters.columnGutters && { columnGutters: gutters.columnGutters.map(formatGutters) }),
+    ...(gutters.rowGutters && { rowGutters: gutters.rowGutters.map(formatGutters) }),
   };
 
   split = Split(splitConfig);

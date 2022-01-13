@@ -1,6 +1,7 @@
 import { html, LitElement } from 'lit';
 import { getState } from '../../state';
 import { SettingItemStyles } from './SettingItem.styles';
+import { LAYOUTS, GRID_LAYOUT } from '../../constants';
 
 const { updateSettings, ...settings } = getState();
 export class SettingItem extends LitElement {
@@ -61,6 +62,13 @@ export class SettingItem extends LitElement {
     const { for: settingKey } = target.dataset;
     let _value = type === 'checkbox' ? checked : value;
 
+    if (this.type === 'layout') {
+      _value = {
+        type: value,
+        gutters: { ...LAYOUTS[value] },
+        style: GRID_LAYOUT[value],
+      };
+    }
     updateSettings({ key: settingKey, value: _value });
     this.settingChangedEvent();
   };
@@ -94,6 +102,8 @@ export class SettingItem extends LitElement {
         <input type="checkbox" data-for="${this.setting}" @change="${this.handleChange}"></input>
         ${this.description}
       </label> `;
+    } else if (this.type === 'layout') {
+      return html`<layout-selector .onChangeLayout="${this.handleChange}"></layout-selector>`;
     }
   };
 

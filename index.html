@@ -74,7 +74,7 @@
       </footer>
     </aside>
     <main id="app">
-      <section class="playground" data-layout="default">
+      <section class="playground" data-layout="one-row">
         <code-editor language="html"></code-editor>
         <code-editor language="javascript"></code-editor>
         <code-editor language="css"></code-editor>
@@ -152,6 +152,14 @@
                 type="select"
                 options='[{"label": "Dark", "value": "vs-dark"},{"label": "Light", "value": "vs"},{"label": "High Contrast", "value": "hc-black"}]'
               ></setting-item>
+              <setting-item
+                label="Layout"
+                settingType="Workbench"
+                description="Controls how editor are displayed."
+                setting="layout"
+                type="layout"
+              ></setting-item>
+
             </fieldset>
           </div>
           <div class="group settings__download">

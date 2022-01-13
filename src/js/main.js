@@ -30,7 +30,7 @@ const EDITOR_DEFAULT_VALUE = {
 };
 const { layout } = getState();
 
-setSplitGrid(layout.splitter);
+setSplitGrid(layout);
 
 subscribe((state) => {
   Object.values(EDITORS).forEach((editor) => {
@@ -44,7 +44,7 @@ subscribe((state) => {
     };
     updateOptions(editor, newOptions);
   });
-  setSplitGrid();
+  setSplitGrid(state.layout);
 });
 
 const EDITORS = [...editorsElements].reduce((acc, editor) => {

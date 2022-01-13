@@ -1,4 +1,5 @@
 import { DEFAULT_SETTINGS } from './settings';
-import { ONE_ROW_LAYOUT, DEFAULT_LAYOUT } from './layout';
+import { LAYOUTS } from './layout';
+import { GRID_LAYOUT } from './gridlayout';
 
-export { DEFAULT_SETTINGS, ONE_ROW_LAYOUT, DEFAULT_LAYOUT };
+export { DEFAULT_SETTINGS, LAYOUTS, GRID_LAYOUT };
