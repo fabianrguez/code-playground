@@ -37,4 +37,22 @@ export const LAYOUTS = {
       },
     ],
   },
+  'editors-up': {
+    columnGutters: [
+      {
+        track: 1,
+        element: '.first-gutter',
+      },
+      {
+        track: 3,
+        element: '.second-gutter',
+      },
+    ],
+    rowGutters: [
+      {
+        track: 1,
+        element: '.extra-gutter',
+      },
+    ],
+  },
 };

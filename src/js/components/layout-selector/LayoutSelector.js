@@ -11,6 +11,7 @@ export class LayoutSelector extends LitElement {
     this.options = [
       { label: 'default', value: 'default' },
       { label: 'one row', value: 'one-row' },
+      { label: 'editors up', value: 'editors-up' },
     ];
   }
 
@@ -41,15 +42,6 @@ export class LayoutSelector extends LitElement {
   handleChange = (e) => {
     e.preventDefault();
     this.onChangeLayout(e);
-    // const { value } = e.target;
-
-    // const layout = {
-    //   type: value,
-    //   gutters: { ...LAYOUTS[value] },
-    //   style: GRID_LAYOUT[value],
-    // };
-
-    // updateSettings({ key: 'layout', value: layout });
   };
 
   render() {

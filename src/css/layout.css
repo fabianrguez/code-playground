@@ -31,6 +31,36 @@
   grid-area: 1 / 6 / 1 / 6;
 }
 
+.playground[data-layout='editors-up'] {
+  grid-template-columns: 1fr 5px 1fr 5px 1fr;
+  grid-template-rows: 1fr 5px 1fr;
+  grid-template-areas:
+    'html-editor . js-editor . css-editor'
+    '. . . . .'
+    'result-preview result-preview result-preview result-preview result-preview';
+}
+
+.playground[data-layout='editors-up'] .first-gutter,
+.playground[data-layout='editors-up'] .second-gutter {
+  cursor: col-resize;
+}
+
+.playground[data-layout='editors-up'] .extra-gutter {
+  cursor: row-resize;
+}
+
+.playground[data-layout='editors-up'] .first-gutter {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.playground[data-layout='editors-up'] .second-gutter {
+  grid-area: 1 / 4 / 2 / 4;
+}
+
+.playground[data-layout='editors-up'] .extra-gutter {
+  grid-area: 2 / 1 / 2 / 6;
+}
+
 .result {
   grid-area: result-preview;
   height: 100%;
