@@ -12,9 +12,9 @@ export function setSplitGrid({ gutters, type }) {
   const playgrondElement = document.querySelector('.playground');
   playgrondElement.setAttribute('style', GRID_LAYOUT[type]);
   playgrondElement.setAttribute('data-layout', type);
-  
+
   if (split) {
-    split.destroy(true);
+    split.destroy();
   }
 
   const splitConfig = {

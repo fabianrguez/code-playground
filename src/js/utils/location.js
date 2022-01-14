@@ -9,6 +9,7 @@ export const getUrlParams = () => {
     .reduce((acc, param) => ({ ...acc, ...param }), {});
 };
 
-export const updateUrlCodeParam = (value) => {
-  window.history.replaceState(null, null, `?code=${value}`);
+export const updateUrlCodeParam = ({ value, removeParam }) => {
+  const url = removeParam ? '?' : `?code=${value}`;
+  window.history.replaceState(null, null, url);
 };
