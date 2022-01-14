@@ -13,6 +13,7 @@ code-editor[language='css']:after {
   .result {
     flex-shrink: 0;
     scroll-snap-align: center;
+    scroll-snap-stop: always;
   }
 
   code-editor {

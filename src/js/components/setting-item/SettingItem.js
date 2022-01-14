@@ -103,7 +103,10 @@ export class SettingItem extends LitElement {
         ${this.description}
       </label> `;
     } else if (this.type === 'layout') {
-      return html`<layout-selector .onChangeLayout="${this.handleChange}"></layout-selector>`;
+      return html`<layout-selector
+        value="${this.value?.type}"
+        .onChangeLayout="${this.handleChange}"
+      ></layout-selector>`;
     }
   };
 
