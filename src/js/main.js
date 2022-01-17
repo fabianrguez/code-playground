@@ -71,13 +71,10 @@ function update() {
 }
 
 function updateHash() {
-  console.log('update hash');
   const { html: htmlEditor, css: cssEditor, javascript: jsEditor } = EDITORS;
-  // if ([htmlEditor, cssEditor, jsEditor].some((editor) => editor.getValue() !== '')) {
   const areAllEditorsEmpty = [htmlEditor, cssEditor, jsEditor].every((editor) => editor.getValue() === '');
   const encodedHTML = encode(`${htmlEditor.getValue()}|${jsEditor.getValue()}|${cssEditor.getValue()}`);
   updateUrlCodeParam({ value: encodedHTML, removeParam: areAllEditorsEmpty });
-  // }
 }
 
 function handleClickOutsideModal(e) {
