@@ -2,6 +2,8 @@ import { parseDate } from './utils';
 
 const searchPackageElement = document.querySelector('input[name="search-packages"]');
 const packageResultList = document.querySelector('.package__list');
+let previousSearchResult = [];
+let actualPage = 1;
 
 async function fetchPackages({ packageName, page = 1 }) {
   const response = await fetch(`https://api.skypack.dev/v1/search?q=${packageName}&p=${page}`);
@@ -29,15 +31,18 @@ function createPackageHTML({ name, popularityScore, description, updatedAt }) {
 }
 
 function handlePackageSelected() {
-  console.log('selecting package');
+  const event = new CustomEvent('package-selected', { detail: { packageName: this.getAttribute('data-package') } });
+  document.dispatchEvent(event);
 }
 
 function renderResultPackages({ results }) {
+  packageResultList.innerHTML = '';
   packageResultList.removeAttribute('hidden');
   results.forEach((_package) => {
     const liElement = document.createElement('li');
     liElement.setAttribute('class', 'package');
     liElement.setAttribute('data-package', _package.name);
+    liElement.setAttribute('title', `${_package.name} - ${_package.description}`);
     liElement.innerHTML = createPackageHTML(_package);
     liElement.addEventListener('click', handlePackageSelected);
 
@@ -45,8 +50,13 @@ function renderResultPackages({ results }) {
   });
 }
 
+function fetchMorePackages({ packageName, page }) {
+  const { results } = fetchPackages({ packageName, page });
+  previousSearchResult = [...previousSearchResult, results];
+  renderResultPackages({ previousSearchResult });
+}
+
 async function handleSearch() {
-  packageResultList.innerHTML = '';
   if (this.value) {
     const { results } = await fetchPackages({ packageName: this.value });
     results && renderResultPackages({ results });

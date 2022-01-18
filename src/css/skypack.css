@@ -43,6 +43,9 @@
 }
 
 .package {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 110px;
   width: 280px;
   border: 1px solid #c5c5c5;
@@ -61,10 +64,6 @@
   align-items: center;
   justify-content: space-between;
   margin: 0.75rem 0;
-}
-
-.package footer {
-  margin: 1rem 0;
 }
 
 .badge {

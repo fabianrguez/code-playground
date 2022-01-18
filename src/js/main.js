@@ -92,3 +92,4 @@ function handleSettingItemChange(e) {
 settingItems.forEach((settingItem) => settingItem.addEventListener('setting-changed', handleSettingItemChange));
 window.addEventListener('click', handleClickOutsideModal);
 document.addEventListener('DOMContentLoaded', update);
+document.addEventListener('package-selected', (e) => console.log(e));
