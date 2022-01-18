@@ -5,6 +5,7 @@ import { create, updateOptions } from './editor';
 import './splitter';
 import './share';
 import './download';
+import './skypack';
 import { subscribe, getState } from './state';
 import { debounce, generateHtml, getUrlParams, updateUrlCodeParam } from './utils';
 import { updateButtonsAvailability } from './share';

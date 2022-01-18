@@ -122,4 +122,8 @@ code-editor[language='css'] {
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
   }
+
+  .playground::-webkit-scrollbar {
+    display: none
+  };
 }

@@ -11,7 +11,7 @@ export default function generateHtml({ html, css, js }) {
       </head>
         <body>
         ${html}
-        <script>
+        <script type="module">
         ${js}
         </script>
       </body>
