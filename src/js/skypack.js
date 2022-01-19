@@ -1,12 +1,15 @@
-import { parseDate } from './utils';
+import { debounce, parseDate } from './utils';
 
 const searchPackageElement = document.querySelector('input[name="search-packages"]');
 const packageResultList = document.querySelector('.package__list');
 let previousSearchResult = [];
 let actualPage = 1;
 
+const API_URL = 'https://api.skypack.dev/v1';
+const CDN_URL = 'https://cdn.skypack.dev';
+
 async function fetchPackages({ packageName, page = 1 }) {
-  const response = await fetch(`https://api.skypack.dev/v1/search?q=${packageName}&p=${page}`);
+  const response = await fetch(`${API_URL}/search?q=${packageName}&p=${page}`);
   return await response.json();
 }
 
@@ -31,7 +34,9 @@ function createPackageHTML({ name, popularityScore, description, updatedAt }) {
 }
 
 function handlePackageSelected() {
-  const event = new CustomEvent('package-selected', { detail: { packageName: this.getAttribute('data-package') } });
+  const event = new CustomEvent('package-selected', {
+    detail: { packageName: this.getAttribute('data-package'), url: CDN_URL },
+  });
   document.dispatchEvent(event);
 }
 
@@ -65,4 +70,4 @@ async function handleSearch() {
   packageResultList.setAttribute('hidden', '');
 }
 
-searchPackageElement.addEventListener('input', handleSearch);
+searchPackageElement.addEventListener('input', debounce(handleSearch, 300));

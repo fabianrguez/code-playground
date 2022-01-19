@@ -89,7 +89,16 @@ function handleSettingItemChange(e) {
   showToast({ content: `${setting} has been updated!` });
 }
 
+function handleAddImportStament(e) {
+  const {
+    detail: { packageName, url },
+  } = e;
+  const importStament = `import ${packageName} from '${url}/${packageName}'`;
+  const { javascript: jsEditor } = EDITORS;
+  jsEditor.setValue(`${importStament}\n${jsEditor.getValue()}`);
+}
+
 settingItems.forEach((settingItem) => settingItem.addEventListener('setting-changed', handleSettingItemChange));
 window.addEventListener('click', handleClickOutsideModal);
 document.addEventListener('DOMContentLoaded', update);
-document.addEventListener('package-selected', (e) => console.log(e));
+document.addEventListener('package-selected', handleAddImportStament);
