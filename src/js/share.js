@@ -7,8 +7,20 @@ import { getState } from './state';
 const shareUrlButton = document.querySelector('.share-btn.copy-link');
 const downloadCodeButton = document.querySelector('.share-btn.download-code');
 
-function handleCopyUrl() {
-  copyToClipboard(window.location);
+const SHORT_URL_API = 'https://api.shrtco.de/v2/';
+
+async function getShortenUrl() {
+  const url = window.location.href;
+  if (url.includes('localhost:3000')) {
+    url.replace('localhost:3000', 'code-playground.vercel.app');
+  }
+  const response = await fetch(`${SHORT_URL_API}/shorten?url=${url}`);
+  return await response.json();
+}
+
+async function handleCopyUrl() {
+  const { result } = await getShortenUrl();
+  copyToClipboard(result?.short_link);
   showToast({ content: 'URL copied to clipboard!' });
 }
 
